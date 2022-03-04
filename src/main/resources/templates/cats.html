@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show all cats!</title>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<form>
+<div th:each="cat: ${cats}">
+    <img src="${cat.picPath}" width="400" th:src="@{${cat.thPicPath}}"/>
+    <input name="selectedCats" type="checkbox" th:value="${cat.id}">
+    <span th:text="${cat.name}">Cat Name</span>
+</div>
+</form>
+</body>
+</html>
