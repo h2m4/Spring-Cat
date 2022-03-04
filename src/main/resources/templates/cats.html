@@ -21,12 +21,16 @@
 </head>
 <body>
 
-<form>
-<div th:each="cat: ${cats}">
-    <img src="${cat.picPath}" width="400" th:src="@{${cat.thPicPath}}"/>
-    <input name="selectedCats" type="checkbox" th:value="${cat.id}">
-    <span th:text="${cat.name}">Cat Name</span>
-</div>
+<form method="post" th:object="${cart}">
+    <div th:each="cat: ${cats}">
+        <img src="${cat.picPath}" width="400" th:src="@{${cat.thPicPath}}"/>
+        <input name="selectedCats" type="checkbox" th:value="${cat.id}">
+        <span th:text="${cat.name}">Cat Name</span>
+    </div>
+    <div>
+        <button class="button">Add my cute cat pictures to cart</button>
+    </div>
 </form>
+<a href="/cart"><button class="button">Check my cart</button></a>
 </body>
 </html>

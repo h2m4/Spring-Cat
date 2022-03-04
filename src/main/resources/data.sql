@@ -1,4 +1,5 @@
 drop table if exists cat;
+drop table if exists cart;
 
 create table cat(
     id int identity ,
@@ -10,6 +11,9 @@ create table cat(
     picPath varchar (40),
     thPicPath varchar (40));
 
+create table cart(
+    catId int
+);
 
 insert into cat (id, name, gender, longHaired, roundFace, lively, picPath, thPicPath
 ) values (1, 'Lucy', 'female', 1, 0, 0, '../static/images/cat1.jpeg', 'images/cat1.jpeg');
