@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart: selected cats photos</title>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div th:each="cat: ${catsInCart}">
+    <img src="${cat.picPath}" width="400" th:src="@{${cat.thPicPath}}"/>
+    <span th:text="${cat.name}">Cat Name</span>
+</div>
+
+</body>
+</html>
