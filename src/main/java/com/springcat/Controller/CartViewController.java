@@ -1,7 +1,9 @@
 package com.springcat.Controller;
 
 import com.springcat.Model.Cat;
+import com.springcat.Model.Gift;
 import com.springcat.Model.JdbcCartRepository;
+import com.springcat.Utility.EmailSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +18,11 @@ import java.util.List;
 @Slf4j
 @Controller
 public class CartViewController {
-//    @Autowired
-//    private EmailSender emailSender;
+
+    @Autowired
+    private EmailSender emailSender;
 
     private JdbcCartRepository cartRepository;
-
 
     @Autowired
     public CartViewController(JdbcCartRepository cartRepository) {
@@ -31,7 +33,7 @@ public class CartViewController {
     public String showCart(Model model) {
         log.info("go to cart page");
         model.addAttribute("catsInCart", catsInCart());
-//        model.addAttribute("gift", new Gift());
+        model.addAttribute("gift", new Gift());
         return "cart";
     }
 
@@ -41,13 +43,13 @@ public class CartViewController {
         return cats;
     }
 
-//    @PostMapping ("/cart")
-//    public String sendEmail(@ModelAttribute ("gift") Gift gift) {
-//        log.info("gift:"+gift);
-//        String destinationEmail = gift.getEmail();
-//        String subject = gift.getComment();
-//        emailSender.sendEmailWithAttachment(catsInCart(), destinationEmail, subject);
-//        return "redirect:/cats";
-//    }
+    @PostMapping ("/cart")
+    public String sendEmail(@ModelAttribute ("gift") Gift gift) {
+        log.info("gift:"+gift);
+        String destinationEmail = gift.getEmail();
+        String subject = gift.getComment();
+        emailSender.sendEmailWithAttachment(catsInCart(), destinationEmail, subject);
+        return "redirect:/cats";
+    }
 
 }
