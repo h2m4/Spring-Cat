@@ -26,5 +26,13 @@
     <span th:text="${cat.name}">Cat Name</span>
 </div>
 
+<form method="post" th:object="${gift}">
+    <labe>send cat pics to this email:</labe>
+    <input type="text" th:field="*{email}"/>
+    <labe>comments:</labe>
+    <input type="text" th:field="*{comment}">
+    <input type="submit" class="button" value="send cat pictures to my friend">
+</form>
+
 </body>
 </html>
