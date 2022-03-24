@@ -23,7 +23,7 @@ public class CatPageControllerTest {
         mockMvc.perform(get("/cat"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("cat"))
-                .andExpect(content().string(containsString("Miao~")));
+                .andExpect(content().string(containsString("Miao")));
     }
 }
 
